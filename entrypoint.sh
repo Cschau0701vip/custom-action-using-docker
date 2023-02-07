@@ -16,7 +16,7 @@ divider='{
 },'
 
 # Slack markdown doesn't accept empty `text`
-if [ ! -z ${INPUT_BODY} ]
+if [ ! -z '${INPUT_BODY}' ]
 then
   body='{
     "type": "section",
