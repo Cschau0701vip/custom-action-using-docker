@@ -1,4 +1,4 @@
- name: Announce the release on Slack
+name: Announce the release on Slack
 
 on:
   push:
