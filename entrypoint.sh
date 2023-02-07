@@ -46,6 +46,8 @@ blocks='"blocks": [
 
 data='{'$blocks'}'
 
+echo $data
+
 curl ${INPUT_WEBHOOK_URL} \
   --request POST \
   --header 'Content-type: application/json' \
