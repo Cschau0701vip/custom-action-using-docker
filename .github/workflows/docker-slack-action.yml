@@ -16,6 +16,6 @@ jobs:
         uses: ./     #custom local
         with:
           webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          title: ${{ dev.MESSAGE_TITLE }}  # Success!😍
-          body: ${{ dev.MESSAGE_BODY }}  # Hello from local action!
-          context: ${{ dev.MESSAGE_CONTEXT }}  # Demo
+          title: ${{ env.dev.MESSAGE_TITLE }}  # Success!😍
+          body: ${{ env.MESSAGE_BODY }}  # Hello from local action!
+          context: ${{ vars.MESSAGE_CONTEXT }}  # Demo
