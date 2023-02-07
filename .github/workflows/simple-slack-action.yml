@@ -1,8 +1,9 @@
 name: Send message of release on Slack
 
 on:
-  push:
-    branches: [main]
+  #push:
+  #  branches: [main]
+  workflow_dispatch:
     
 jobs:
   my-slack-job:
