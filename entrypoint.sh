@@ -2,12 +2,15 @@
 set -e
 
 echo ${INPUT_TITLE}
+title = ${INPUT_TITLE}
+body = ${INPUT_BODY}
+context = ${INPUT_CONTEXT}
 
 header='{
           "type": "header",
           "text": {
           "type": "plain_text",
-          "text": ${INPUT_TITLE}
+          "text": '$title'
           }
         },'
         
@@ -22,7 +25,7 @@ then
     "type": "section",
     "text": {
     "type": "mrkdwn",
-    "text": ${INPUT_BODY}
+    "text": "$body"
     }
   },'
 fi
@@ -32,7 +35,7 @@ context='{
   "elements": [
   {
     "type": "plain_text",
-    "text": ${INPUT_CONTEXT}
+    "text": $context
   }
   ]
 }'
