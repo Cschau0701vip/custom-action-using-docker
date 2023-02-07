@@ -25,3 +25,29 @@ jobs:
           title: Success!😍
           body: Hello from local action!
           context: Demo
+          
+      - name: Get latest commit info
+        run: |
+          echo "::set-output name=TITLE::$(git show -1 --format='%s' -s)"
+          echo "::set-output name=BODY::$(git show -1 --format='%b' -s)"
+        id: latest_commit
+        
+      - uses: homeday-de/slack-release-bot-action@main
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          title: ${{ steps.latest_commit.outputs.TITLE }}
+          body: ${{ steps.latest_commit.outputs.BODY }}
+          context: Demo Website
+          
+      - name: Slackify the release body
+        id: release_body
+        uses: LoveToKnow/slackify-markdown-action@v1.0.0
+        with:
+          text: ${{ github.event.release.body }}
+          
+      - uses: homeday-de/slack-release-bot-action@main
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          title: ${{ github.event.release.name }}
+          body: ${{ steps.release_body.outputs.text }}
+          context: Homeday Blocks
