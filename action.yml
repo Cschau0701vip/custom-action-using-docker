@@ -1,7 +1,8 @@
 name: Release Notification to Slack Channel
 author: cschau0701vip
-icon: message-circle
-color: orange
+branding:
+  icon: message-circle
+  color: orange
 description: Release Notification to Slack Channel BOT using composite action.
 inputs:
   webhook_url:
