@@ -7,7 +7,7 @@ header='{
           "type": "header",
           "text": {
           "type": "plain_text",
-          "text": "${{ inputs.title }}"
+          "text": "${INPUT_TITLE}"
           }
         },'
         
@@ -16,13 +16,13 @@ divider='{
 },'
 
 # Slack markdown doesn't accept empty `text`
-if [ ! -z '${{ inputs.body }}' ]
+if [ ! -z '${INPUT_BODY}' ]
 then
   body='{
     "type": "section",
     "text": {
     "type": "mrkdwn",
-    "text": "${{ inputs.body }}"
+    "text": "${INPUT_BODY}"
     }
   },'
 fi
@@ -32,7 +32,7 @@ context='{
   "elements": [
   {
     "type": "plain_text",
-    "text": "${{ inputs.context }}"
+    "text": "${INPUT_CONTEXT}"
   }
   ]
 }'
@@ -46,7 +46,7 @@ blocks='"blocks": [
 
 data='{'$blocks'}'
 
-curl ${{ inputs.webhook_url }} \
+curl ${INPUT_WEBHOOK_URL} \
   --request POST \
   --header 'Content-type: application/json' \
   --data "$data"
