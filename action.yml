@@ -1,0 +1,21 @@
+name: Release Notification to Slack Channel
+author: cschau0701vip
+description: Release Notification to Slack Channel BOT using composite action.
+inputs:
+  webhook_url:
+    required: true
+    description: Slack webhook URL
+  title:
+    required: true
+    description: Message title
+  body:
+    required: false
+    description: Message body
+  context:
+    required: true
+    description: Project
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+  - ${{ inputs.title}}
