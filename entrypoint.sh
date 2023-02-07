@@ -3,8 +3,9 @@ set -e
 
 echo ${INPUT_TITLE}
 title='${INPUT_TITLE}'
-inbody = '${INPUT_BODY}'
-context = ${INPUT_CONTEXT}
+echo $title
+inbody='${INPUT_BODY}'
+context='${INPUT_CONTEXT}'
 
 header='{
           "type": "header",
