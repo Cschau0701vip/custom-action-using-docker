@@ -46,7 +46,7 @@ blocks='"blocks": [
 
 data='{'$blocks'}'
 
-output=$(curl ${{ inputs.webhook_url }} \
+output=$(curl "${{ inputs.webhook_url }} \
   --request POST \
   --header 'Content-type: application/json' \
-  --data "$data" | jq)
+  --data '$data'" | jq)
