@@ -2,8 +2,8 @@
 set -e
 
 echo ${INPUT_TITLE}
-title = ${INPUT_TITLE}
-body = ${INPUT_BODY}
+title='${INPUT_TITLE}'
+inbody = '${INPUT_BODY}'
 context = ${INPUT_CONTEXT}
 
 header='{
@@ -25,7 +25,7 @@ then
     "type": "section",
     "text": {
     "type": "mrkdwn",
-    "text": "$body"
+    "text": "$inbody"
     }
   },'
 fi
