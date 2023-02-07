@@ -1,11 +1,12 @@
 #!/bin/bash
 set -e
 
-echo ${INPUT_TITLE}
 title=${INPUT_TITLE}
-echo $title
 inbody=${INPUT_BODY}
 context=${INPUT_CONTEXT}
+echo $title
+echo $inbody
+echo $context
 
 header='{
           "type": "header",
@@ -26,7 +27,7 @@ then
     "type": "section",
     "text": {
     "type": "mrkdwn",
-    "text": "$inbody"
+    "text": '$inbody'
     }
   },'
 fi
@@ -36,7 +37,7 @@ context='{
   "elements": [
   {
     "type": "plain_text",
-    "text": $context
+    "text": '$context'
   }
   ]
 }'
