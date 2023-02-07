@@ -7,7 +7,7 @@ header='{
           "type": "header",
           "text": {
           "type": "plain_text",
-          "text": "${INPUT_TITLE}"
+          "text": ${INPUT_TITLE}
           }
         },'
         
@@ -16,13 +16,13 @@ divider='{
 },'
 
 # Slack markdown doesn't accept empty `text`
-if [ ! -z '${INPUT_BODY}' ]
+if [ ! -z ${INPUT_BODY} ]
 then
   body='{
     "type": "section",
     "text": {
     "type": "mrkdwn",
-    "text": "${INPUT_BODY}"
+    "text": ${INPUT_BODY}
     }
   },'
 fi
@@ -32,7 +32,7 @@ context='{
   "elements": [
   {
     "type": "plain_text",
-    "text": "${INPUT_CONTEXT}"
+    "text": ${INPUT_CONTEXT}
   }
   ]
 }'
