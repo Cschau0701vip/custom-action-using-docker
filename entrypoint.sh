@@ -2,10 +2,10 @@
 set -e
 
 echo ${INPUT_TITLE}
-title='${INPUT_TITLE}'
+title=${INPUT_TITLE}
 echo $title
-inbody='${INPUT_BODY}'
-context='${INPUT_CONTEXT}'
+inbody=${INPUT_BODY}
+context=${INPUT_CONTEXT}
 
 header='{
           "type": "header",
