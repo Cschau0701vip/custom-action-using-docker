@@ -1,0 +1,16 @@
+ name: Announce the release on Slack
+
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  my-slack-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: homeday-de/slack-release-bot-action@main
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          title: 🚀 v1.0.0
+          body: This major release means that we are live!
+          context: Slack release BOT
