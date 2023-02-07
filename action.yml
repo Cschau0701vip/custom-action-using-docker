@@ -1,0 +1,64 @@
+name: Release Notification to Slack Channel
+author: cschau0701vip
+description: Release Notification to Slack Channel BOT using composite action.
+inputs:
+  webhook_url:
+    required: true
+    description: Slack webhook URL
+  title:
+    required: true
+    description: Message title
+  body:
+    required: false
+    description: Message body
+  context:
+    required: true
+    description: Project
+runs:
+  using: 'composite'
+  steps:
+    - name: Announce on Slack 📢
+      shell: bash
+      run: |
+        header='{
+          "type": "header",
+          "text": {
+          "type": "plain_text",
+          "text": "${{ inputs.title }}"
+          }
+        },'
+        divider='{
+          "type": "divider"
+        },'
+        # Slack markdown doesn't accept empty `text`
+        if [ ! -z '${{ inputs.body }}' ]
+        then
+          body='{
+            "type": "section",
+            "text": {
+            "type": "mrkdwn",
+            "text": "${{ inputs.body }}"
+            }
+          },'
+        fi
+        context='{
+          "type": "context",
+          "elements": [
+          {
+            "type": "plain_text",
+            "text": "${{ inputs.context }}"
+          }
+          ]
+        }'
+        blocks='"blocks": [
+          '$header'
+          '$divider'
+          '$body'
+          '$context'
+        ]'
+        data='{'$blocks'}'
+        
+        curl ${{ inputs.webhook_url }} \
+          --request POST \
+          --header 'Content-type: application/json' \
+          --data "$data"
