@@ -18,19 +18,8 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
 
-      - name: setup node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: 'npm'
-
-      - name: install dependencies
-        run: |
-          npm ci
-      - name: Build action
-        run: |
-          npm run release
-          
-      - uses: ./     #custom local
+      - name: Use local Action
+        uses: ./     #custom local
         with:
           webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
           body: Hello from local action!
