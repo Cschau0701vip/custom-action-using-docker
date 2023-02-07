@@ -22,4 +22,6 @@ jobs:
         uses: ./     #custom local
         with:
           webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          title: Success!😍
           body: Hello from local action!
+          context: Demo
