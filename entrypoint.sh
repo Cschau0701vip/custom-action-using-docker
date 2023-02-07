@@ -12,7 +12,7 @@ header='{
           "type": "header",
           "text": {
           "type": "plain_text",
-          "text": '$title'
+          "text": '"$title"'
           }
         },'
         
@@ -27,7 +27,7 @@ then
     "type": "section",
     "text": {
     "type": "mrkdwn",
-    "text": '$inbody'
+    "text": '"${INPUT_BODY}"'
     }
   },'
 fi
@@ -37,7 +37,7 @@ context='{
   "elements": [
   {
     "type": "plain_text",
-    "text": '$context'
+    "text": '"$context"'
   }
   ]
 }'
